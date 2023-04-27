@@ -13,7 +13,7 @@ const framebuffer = [];
 let frames;
 let currentFrame = 0;
 let editor;
-
+let uselessvar;
 window.drawIcon = function () {
 	let r = 0, p = 0;
 	frames[currentFrame].forEach(function (pixel) {
