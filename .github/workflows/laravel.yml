@@ -3,8 +3,12 @@ name: Laravel PHPStan, Swagger and Pest
 on:
   push:
     branches: [ main, develop ]
+    paths-ignore:
+    - '**/.github/workflows/**'
   pull_request:
     branches: [ main, develop ]
+    paths-ignore:
+      - '**/.github/workflows/**'
 
 jobs:
   laravel-tests:

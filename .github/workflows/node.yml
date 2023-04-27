@@ -3,9 +3,12 @@ name: Node.js build and lint
 on:
   push:
     branches: [ main, develop ]
+    paths-ignore:
+    - '**/.github/workflows/**'
   pull_request:
     branches: [ main, develop ]
-
+    paths-ignore:
+      - '**/.github/workflows/**'
 
 jobs:
   build:

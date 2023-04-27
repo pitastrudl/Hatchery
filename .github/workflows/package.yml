@@ -4,7 +4,8 @@ on:
   push:
     tags:
       - v*
-
+    paths-ignore:
+      - '**/.github/workflows/**'
 jobs:
   build:
 
@@ -52,8 +53,8 @@ jobs:
           name: "testrelease"
           files: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
       - name: Upload release tar
-          uses: actions/upload-artifact@v2
-          with:
-            name: Hatchery_${{ env.RELEASE_VERSION }}
-            path: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
+        uses: actions/upload-artifact@v2
+        with:
+          name: Hatchery_${{ env.RELEASE_VERSION }}
+          path: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
 
