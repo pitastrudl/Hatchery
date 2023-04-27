@@ -46,7 +46,7 @@ jobs:
       - name: Create tar
         run: tar -czf Hatchery_${{ env.RELEASE_VERSION }}.tar.gz ./app ./bootstrap ./config ./database ./public ./resources ./routes ./storage ./vendor ./composer.json ./artisan ./linters
       - name: release
-        uses: actions/create-release@v1
+        uses: actions/create-release@v3
         id: create_release
         with:
           draft: false
