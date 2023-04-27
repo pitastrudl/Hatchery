@@ -48,9 +48,8 @@ jobs:
         run: tar -czf Hatchery_${{ env.RELEASE_VERSION }}.tar.gz ./app ./bootstrap ./config ./database ./public ./resources ./routes ./storage ./vendor ./composer.json ./artisan ./linters
       - name: Release
         uses: softprops/action-gh-release@v1
-        # if: startsWith(github.ref, 'refs/tags/')
         with:
-          name: "testrelease"
+          name: ${{ env.RELEASE_VERSION }}
           files: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
       - name: Upload release tar
         uses: actions/upload-artifact@v2
