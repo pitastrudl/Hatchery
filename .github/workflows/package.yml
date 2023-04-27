@@ -45,8 +45,20 @@ jobs:
         run: chmod 775 ./storage
       - name: Create tar
         run: tar -czf Hatchery_${{ env.RELEASE_VERSION }}.tar.gz ./app ./bootstrap ./config ./database ./public ./resources ./routes ./storage ./vendor ./composer.json ./artisan ./linters
-      - name: Upload release tar
-        uses: actions/upload-artifact@v2
+      - name: release
+        uses: actions/create-release@v1
+        id: create_release
         with:
-          name: Hatchery_${{ env.RELEASE_VERSION }}
-          path: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
+          draft: false
+          prerelease: false
+          release_name: ${{  env.RELEASE_VERSION }}
+          tag_name: ${{  env.RELEASE_VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Upload release tar
+          uses: actions/upload-artifact@v2
+          with:
+            upload_url: ${{ steps.create_release.outputs.upload_url }}
+            name: Hatchery_${{ env.RELEASE_VERSION }}
+            path: Hatchery_${{ env.RELEASE_VERSION }}.tar.gz
+
